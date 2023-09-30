@@ -6,17 +6,17 @@ function Header() {
 
   return (
     <header>
-      <div data-testid="email-field">
+      <p data-testid="email-field">
         {`Email: ${userEmail}`}
-      </div>
+      </p>
 
-      <div data-testid="total-field">
+      <p data-testid="total-field">
         Despesa Total: 0
-      </div>
+      </p>
 
-      <div data-testid="header-currency-field">
+      <p data-testid="header-currency-field">
         BRL
-      </div>
+      </p>
     </header>
   );
 }
