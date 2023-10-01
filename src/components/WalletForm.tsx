@@ -13,15 +13,18 @@ function WalletForm() {
   });
   const { value, description, currency, method, tag } = formInfo;
   const dispatch: DispatchType = useDispatch();
-  const { currencies } = useSelector((state: GlobalState) => state.wallet);
-  const { expenses } = useSelector((state: GlobalState) => state.wallet);
+  const { currencies, expenses } = useSelector((state: GlobalState) => state.wallet);
 
   useEffect(() => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
 
   const handleInputChange = (event: any) => {
-    setFormInfo((prevInfo) => ({ ...prevInfo, [event.target.name]: event.target.value }));
+    const { name, value: inputValue } = event.target;
+    setFormInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: inputValue,
+    }));
   };
 
   const handleClick = async () => {
