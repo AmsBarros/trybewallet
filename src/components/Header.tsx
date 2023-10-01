@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { GlobalState, WalletType } from '../types';
+import { GlobalState } from '../types';
 
 function Header() {
   const userEmail = useSelector((state: GlobalState) => state.user.email);
-  const { expenses } = useSelector((state: WalletType) => state);
+  const expenses = useSelector((state: GlobalState) => state.wallet.expenses);
 
   const calculateTotal = () => {
     return expenses.reduce((total, expense) => {
@@ -14,7 +14,7 @@ function Header() {
     }, 0);
   };
 
-  const total = calculateTotal();
+  const total = expenses ? calculateTotal() : 0;
 
   return (
     <header>
@@ -23,7 +23,7 @@ function Header() {
       </p>
 
       <p data-testid="total-field">
-        {`Despesa Total: ${total.toFixed(2)}`}
+        {total.toFixed(2)}
       </p>
 
       <p data-testid="header-currency-field">

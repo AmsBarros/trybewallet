@@ -48,12 +48,14 @@ function WalletForm() {
         placeholder="0"
         data-testid="value-input"
         value={ value }
+        name="value"
         onChange={ handleInputChange }
       />
 
       <select
         data-testid="currency-input"
         value={ currency }
+        name="currency"
         onChange={ handleInputChange }
       >
         {currencies.map((currencyOption) => (
@@ -66,6 +68,7 @@ function WalletForm() {
       <select
         data-testid="method-input"
         value={ method }
+        name="method"
         onChange={ handleInputChange }
       >
         <option value="Dinheiro">Dinheiro</option>
@@ -76,6 +79,7 @@ function WalletForm() {
       <select
         data-testid="tag-input"
         value={ tag }
+        name="tag"
         onChange={ handleInputChange }
       >
         <option value="Alimentação">Alimentação</option>
@@ -92,11 +96,12 @@ function WalletForm() {
         placeholder="Descrição da despesa"
         data-testid="description-input"
         value={ description }
+        name="description"
         onChange={ handleInputChange }
       />
 
       <button
-        type="submit"
+        type="button"
         onClick={ handleClick }
       >
         Adicionar despesa
