@@ -7,7 +7,7 @@ export type UserType = {
 
 export type WalletType = {
   currencies: [], // array de string
-  expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
+  expenses: ExpenseType[], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
   editor: boolean, // valor booleano que indica se uma despesa está sendo editada
   idToEdit: number, // valor numérico que armazena o id da despesa que está sendo editada
 };
@@ -15,6 +15,16 @@ export type WalletType = {
 export type GlobalState = {
   user: UserType,
   wallet: WalletType,
+};
+
+export type ExpenseType = {
+  id?: number;
+  exchangeRates: any;
+  value: string;
+  description: string;
+  currency: string;
+  method: string;
+  tag: string;
 };
 
 export type DispatchType = ThunkDispatch<GlobalState, null, AnyAction>;

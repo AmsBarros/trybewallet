@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 import { AnyAction } from 'redux';
-import { REQUEST_STARTED, REQUEST_SUCCESSFUL } from '../actions';
+import { ADD_EXPENSE, REQUEST_STARTED, REQUEST_SUCCESSFUL } from '../actions';
 
 const initialState = {
   currencies: [], // array de string
@@ -15,11 +15,19 @@ function walletReducer(state = initialState, action: AnyAction) {
       return {
         ...state,
       };
+
     case REQUEST_SUCCESSFUL:
       return {
         ...state,
         currencies: action.payload,
       };
+
+    case ADD_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload,
+      };
+
     default:
       return state;
   }

@@ -1,10 +1,11 @@
 import { Dispatch } from 'redux';
+import { ExpenseType } from '../../types';
 
 // Coloque aqui suas actions
 export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
-export const REQUEST_FAILED = 'REQUEST_FAILED';
+export const ADD_EXPENSE = 'ADD_EXPENSE';
 
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,
@@ -22,6 +23,17 @@ function requestSuccessful(payload: any) {
   };
 }
 
+export function addExpense(payload: ExpenseType, expenses: ExpenseType[]) {
+  const id = expenses.length;
+  return {
+    type: ADD_EXPENSE,
+    payload: {
+      ...payload,
+      id,
+    },
+  };
+}
+
 export function fetchCurrencies() {
   return async (dispatch: Dispatch) => {
     try {
@@ -30,7 +42,6 @@ export function fetchCurrencies() {
       const data = await response.json();
       const currencies = Object.keys(data)
         .filter((currency) => currency !== 'USDT');
-      // console.log(currencies);
       dispatch(requestSuccessful(currencies));
     } catch (error) {
       console.error(error);
