@@ -6,6 +6,7 @@ export const UPDATE_EMAIL = 'UPDATE_EMAIL';
 export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,
@@ -31,6 +32,13 @@ export function addExpense(payload: ExpenseType, expenses: ExpenseType[]) {
       ...payload,
       id,
     },
+  };
+}
+
+export function removeExpense(payload: number) {
+  return {
+    type: REMOVE_EXPENSE,
+    payload,
   };
 }
 
