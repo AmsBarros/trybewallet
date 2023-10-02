@@ -1,10 +1,6 @@
-import { useSelector } from 'react-redux';
-import { GlobalState } from '../types';
 import TableRow from './TableRow';
 
 function Table() {
-  const { expenses } = useSelector((state: GlobalState) => state.wallet);
-
   return (
     <table>
       <thead>
@@ -21,9 +17,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {expenses.map((item) => (
-          <TableRow key={ item.id } item={ item } />
-        ))}
+        <TableRow />
       </tbody>
     </table>
   );
