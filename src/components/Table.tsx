@@ -28,7 +28,11 @@ function Table() {
             <td>{Number(item.value).toFixed(2)}</td>
             <td>{item.exchangeRates[item.currency].name}</td>
             <td>{Number(item.exchangeRates[item.currency].ask).toFixed(2)}</td>
-            <td>{(Number(item.value) * Number(item.exchangeRates[item.currency].ask)).toFixed(2)}</td>
+            <td>
+              {(
+                Number(item.value) * Number(item.exchangeRates[item.currency].ask)
+              ).toFixed(2)}
+            </td>
             <td>Real</td>
             <td>
               <button>Editar</button>
