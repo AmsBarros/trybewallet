@@ -47,7 +47,7 @@ function WalletForm() {
   };
 
   const handleEditClick = () => {
-    dispatch(editExpense(expenses));
+    dispatch(editExpense(formInfo));
     setFormInfo({
       ...formInfo,
       value: '',

@@ -54,8 +54,8 @@ function walletReducer(state = initialState, action: AnyAction) {
       return {
         ...state,
         expenses: state.expenses.map((expense) => {
-          if (state.idToEdit === action.payload.id) {
-            return action.payload;
+          if (state.idToEdit === expense.id) {
+            return { ...expense, ...action.payload };
           }
           return expense;
         }),

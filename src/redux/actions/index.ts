@@ -51,7 +51,7 @@ export function editMode(payload: number) {
   };
 }
 
-export function editExpense(payload: ExpenseType[]) {
+export function editExpense(payload: Omit<ExpenseType, 'id' | 'exchangeRates'>) {
   return {
     type: EDIT_EXPENSE,
     payload,
