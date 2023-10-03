@@ -2,6 +2,8 @@
 import { AnyAction } from 'redux';
 import {
   ADD_EXPENSE,
+  EDIT_EXPENSE,
+  EDIT_MODE,
   REMOVE_EXPENSE,
   REQUEST_STARTED,
   REQUEST_SUCCESSFUL,
@@ -12,7 +14,7 @@ const initialState: WalletType = {
   currencies: [], // array de string
   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
   editor: false, // valor booleano que indica se uma despesa está sendo editada
-  idToEdit: 0,
+  idToEdit: null,
 };
 
 function walletReducer(state = initialState, action: AnyAction) {
@@ -39,6 +41,26 @@ function walletReducer(state = initialState, action: AnyAction) {
         ...state,
         expenses: state.expenses
           .filter((expense) => expense.id !== action.payload),
+      };
+
+    case EDIT_MODE:
+      return {
+        ...state,
+        editor: true,
+        idToEdit: action.payload,
+      };
+
+    case EDIT_EXPENSE:
+      return {
+        ...state,
+        expenses: state.expenses.map((expense) => {
+          if (state.idToEdit === action.payload.id) {
+            return action.payload;
+          }
+          return expense;
+        }),
+        editor: false,
+        idToEdit: null,
       };
 
     default:

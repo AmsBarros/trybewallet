@@ -7,6 +7,8 @@ export const REQUEST_STARTED = 'REQUEST_STARTED';
 export const REQUEST_SUCCESSFUL = 'REQUEST_SUCCESSFUL';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
+export const EDIT_MODE = 'EDIT_MODE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 
 export const updateEmail = (email: string) => ({
   type: UPDATE_EMAIL,
@@ -38,6 +40,20 @@ export function addExpense(payload: ExpenseType, expenses: ExpenseType[]) {
 export function removeExpense(payload: number) {
   return {
     type: REMOVE_EXPENSE,
+    payload,
+  };
+}
+
+export function editMode(payload: number) {
+  return {
+    type: EDIT_MODE,
+    payload,
+  };
+}
+
+export function editExpense(payload: ExpenseType[]) {
+  return {
+    type: EDIT_EXPENSE,
     payload,
   };
 }

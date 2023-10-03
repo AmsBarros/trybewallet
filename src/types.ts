@@ -9,7 +9,7 @@ export type WalletType = {
   currencies: [], // array de string
   expenses: ExpenseType[], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
   editor: boolean, // valor booleano que indica se uma despesa está sendo editada
-  idToEdit: number, // valor numérico que armazena o id da despesa que está sendo editada
+  idToEdit: null, // valor numérico que armazena o id da despesa que está sendo editada
 };
 
 export type GlobalState = {

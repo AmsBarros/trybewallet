@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, GlobalState } from '../types';
-import { removeExpense } from '../redux/actions';
+import { editMode, removeExpense } from '../redux/actions';
 
 function TableRow() {
   const { expenses } = useSelector((state: GlobalState) => state.wallet);
@@ -8,6 +8,10 @@ function TableRow() {
 
   const handleDelete = (itemId: number) => {
     dispatch(removeExpense(itemId));
+  };
+
+  const handleEdit = (itemId: number) => {
+    dispatch(editMode(itemId));
   };
 
   return (
@@ -26,7 +30,12 @@ function TableRow() {
         </td>
         <td>Real</td>
         <td>
-          <button>Editar</button>
+          <button
+            data-testid="edit-btn"
+            onClick={ () => item.id !== undefined && handleEdit(item.id) }
+          >
+            Editar
+          </button>
 
           <button
             data-testid="delete-btn"

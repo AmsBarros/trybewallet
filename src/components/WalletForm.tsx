@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DispatchType, GlobalState } from '../types';
-import { addExpense, fetchCurrencies } from '../redux/actions';
+import { addExpense, editExpense, fetchCurrencies } from '../redux/actions';
 
 function WalletForm() {
   const [formInfo, setFormInfo] = useState({
@@ -13,7 +13,11 @@ function WalletForm() {
   });
   const { value, description, currency, method, tag } = formInfo;
   const dispatch: DispatchType = useDispatch();
-  const { currencies, expenses } = useSelector((state: GlobalState) => state.wallet);
+  const {
+    currencies,
+    expenses,
+    editor,
+  } = useSelector((state: GlobalState) => state.wallet);
 
   useEffect(() => {
     dispatch(fetchCurrencies());
@@ -27,7 +31,7 @@ function WalletForm() {
     }));
   };
 
-  const handleClick = async () => {
+  const handleAddClick = async () => {
     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
     const data = await response.json();
     const newExpense = {
@@ -35,6 +39,15 @@ function WalletForm() {
       exchangeRates: data,
     };
     dispatch(addExpense(newExpense, expenses));
+    setFormInfo({
+      ...formInfo,
+      value: '',
+      description: '',
+    });
+  };
+
+  const handleEditClick = () => {
+    dispatch(editExpense(expenses));
     setFormInfo({
       ...formInfo,
       value: '',
@@ -103,12 +116,23 @@ function WalletForm() {
         onChange={ handleInputChange }
       />
 
-      <button
-        type="button"
-        onClick={ handleClick }
-      >
-        Adicionar despesa
-      </button>
+      {
+        editor ? (
+          <button
+            type="button"
+            onClick={ handleEditClick }
+          >
+            Editar despesa
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={ handleAddClick }
+          >
+            Adicionar despesa
+          </button>
+        )
+      }
     </form>
   );
 }
