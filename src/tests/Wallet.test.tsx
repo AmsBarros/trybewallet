@@ -18,7 +18,7 @@ const initialState = {
 };
 
 describe('Testes do componente Wallet', () => {
-  it('Testa coisas na tela', () => {
+  it('Deve exibir elementos na tela corretamente', () => {
     renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'], initialState });
 
     const emailField = screen.getByTestId('email-field');
@@ -32,11 +32,11 @@ describe('Testes do componente Wallet', () => {
     expect(addExpenseBtn).toBeInTheDocument();
   });
 
-  it('Testa funcionalidade das coisas na tela', async () => {
+  it('Testa funcionalidade da tabela', async () => {
     const MOCK_RESPONSE = {
       json: async () => mockData,
     } as Response;
-    vi.spyOn(global, 'fetch').mockResolvedValueOnce(MOCK_RESPONSE);
+    vi.spyOn(global, 'fetch').mockResolvedValue(MOCK_RESPONSE);
 
     waitFor(() => renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'], initialState }));
     const user = userEvent.setup();
@@ -47,6 +47,7 @@ describe('Testes do componente Wallet', () => {
     const tagSelect = screen.getByTestId('tag-input');
     const descriptionInput = screen.getByTestId('description-input');
     const addExpenseBtn = screen.getByRole('button', { name: /adicionar/i });
+    const totalField = screen.getByTestId('total-field');
 
     expect(valueInput).toHaveTextContent('');
     expect(currencySelect).toHaveTextContent('USD');
@@ -61,8 +62,25 @@ describe('Testes do componente Wallet', () => {
     await user.type(descriptionInput, 'Meu Produto');
     await user.click(addExpenseBtn);
 
-    await waitFor(() => {
-      expect(screen.getByText('3.25')).toBeInTheDocument();
-    });
+    await waitFor(() => { expect(screen.getByText('3.42')).toBeInTheDocument(); });
+
+    expect(totalField).toHaveTextContent('171.09');
+
+    const editBtn = screen.getByTestId('edit-btn');
+    await user.click(editBtn);
+
+    await user.type(valueInput, '75');
+    await user.type(descriptionInput, 'Alterando meu produto');
+    const editExpenseBtn = screen.getByRole('button', { name: 'Editar despesa' });
+    await user.click(editExpenseBtn);
+
+    await waitFor(() => { expect(totalField).toHaveTextContent('256.63'); });
+
+    const deleteBtn = screen.getByTestId('delete-btn');
+    await user.click(deleteBtn);
+
+    expect(totalField).toHaveTextContent('0.00');
+    expect(valueInput).toHaveTextContent('');
+    expect(descriptionInput).toHaveTextContent('');
   });
 });
