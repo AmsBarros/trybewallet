@@ -73,8 +73,9 @@ function Login() {
           onChange={ handlePasswordChange }
         />
         <button
-          className="bg-green-500
-            hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-full"
+          className={ `bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4
+            rounded w-full
+            ${!isFormValid ? 'disabled:opacity-50 cursor-not-allowed' : ''}` }
           onClick={ handleSubmit }
           disabled={ !isFormValid }
         >
