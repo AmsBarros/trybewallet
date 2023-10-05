@@ -15,17 +15,38 @@ function Header() {
   }, 0).toFixed(2) || '0.00';
 
   return (
-    <header>
+    <header
+      className="bg-white p-12 flex justify-around items-center"
+      style={ { width: '90%' } }
+    >
+      <h2 className="text-2xl text-center">
+        <img
+          src="/src/images/login-logo.png"
+          alt="Ícone de usuário"
+          className="inline mb-2 mr-4"
+        />
+        Trybe
+        <span className="font-bold text-green-500">Wallet</span>
+      </h2>
+      <div className="flex items-center">
+        <img
+          src="/src/images/total-logo.png"
+          alt="Ícone de Total de Despesas"
+          className="inline mr-2"
+        />
+        <p className="mr-2">Total de despesas:</p>
+        <p data-testid="total-field">
+          <strong className="font-bold">{total}</strong>
+        </p>
+        <p data-testid="header-currency-field" className="ml-2">BRL</p>
+      </div>
       <p data-testid="email-field">
-        {`Email: ${email}`}
-      </p>
-
-      <p data-testid="total-field">
-        {total}
-      </p>
-
-      <p data-testid="header-currency-field">
-        BRL
+        <img
+          src="/src/images/user-logo.png"
+          alt="Ícone de Total de Despesas"
+          className="inline mr-2"
+        />
+        {email}
       </p>
     </header>
   );
