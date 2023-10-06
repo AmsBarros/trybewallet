@@ -60,8 +60,8 @@ function WalletForm() {
       className="p-12"
     >
       <div className="flex mb-5">
-        <div className="">
-          <label htmlFor="value" className="pr-5">
+        <div>
+          <label htmlFor="value" className="pr-2">
             Valor:
           </label>
           <input
@@ -77,7 +77,7 @@ function WalletForm() {
         </div>
 
         <div className="flex-1 px-4 mb-4 flex items-center">
-          <label htmlFor="description" className="pr-5">
+          <label htmlFor="description" className="pr-2">
             Descrição:
           </label>
           <input
@@ -94,7 +94,10 @@ function WalletForm() {
       </div>
 
       <div className="flex flex-wrap justify-around -mx-4 mb-5">
-        <div>
+        <div className="flex items-center mb-2">
+          <label htmlFor="currency" className="pr-2">
+            Moeda:
+          </label>
           <select
             data-testid="currency-input"
             value={ currency }
@@ -110,7 +113,10 @@ function WalletForm() {
           </select>
         </div>
 
-        <div>
+        <div className="flex items-center mb-2">
+          <label htmlFor="method" className="pr-2" style={ { whiteSpace: 'nowrap' } }>
+            Método de pagamento:
+          </label>
           <select
             data-testid="method-input"
             value={ method }
@@ -124,7 +130,10 @@ function WalletForm() {
           </select>
         </div>
 
-        <div>
+        <div className="flex items-center mb-2">
+          <label htmlFor="tag" className="pr-2" style={ { whiteSpace: 'nowrap' } }>
+            Categoria da depesa:
+          </label>
           <select
             data-testid="tag-input"
             value={ tag }
@@ -147,7 +156,7 @@ function WalletForm() {
           <button
             type="button"
             onClick={ handleEditClick }
-            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+            className="px-28 py-2 bg-blue-500 text-white rounded-md"
           >
             Editar despesa
           </button>
@@ -155,7 +164,7 @@ function WalletForm() {
           <button
             type="button"
             onClick={ handleAddClick }
-            className="px-4 py-2 bg-green-500 text-white rounded-md"
+            className="px-28 py-2 bg-green-500 text-white rounded-md"
           >
             Adicionar despesa
           </button>

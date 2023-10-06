@@ -17,31 +17,46 @@ function TableRow() {
   return (
     expenses.map((item) => (
       <tr key={ item.id }>
-        <td>{item.description}</td>
-        <td>{item.tag}</td>
-        <td>{item.method}</td>
-        <td>{Number(item.value).toFixed(2)}</td>
-        <td>{item.exchangeRates[item.currency].name}</td>
-        <td>{Number(item.exchangeRates[item.currency].ask).toFixed(2)}</td>
-        <td>
+        <td className="py-2 border-b text-center">{item.description}</td>
+        <td className="py-2 border-b text-center">{item.tag}</td>
+        <td className="py-2 border-b text-center">{item.method}</td>
+        <td className="py-2 border-b text-center">{Number(item.value).toFixed(2)}</td>
+        <td
+          className="py-2 border-b text-center"
+        >
+          {item.exchangeRates[item.currency].name}
+        </td>
+        <td
+          className="py-2 border-b text-center"
+        >
+          {Number(item.exchangeRates[item.currency].ask).toFixed(2)}
+        </td>
+        <td className="py-2 border-b text-center">
           {(
             Number(item.value) * Number(item.exchangeRates[item.currency].ask)
           ).toFixed(2)}
         </td>
-        <td>Real</td>
-        <td>
+        <td className="py-2 border-b text-center">Real</td>
+        <td className="py-2 border-b text-center">
           <button
             data-testid="edit-btn"
             onClick={ () => item.id !== undefined && handleEdit(item.id) }
           >
-            Editar
+            <img
+              src="/src/images/edit.png"
+              alt="Editar"
+            />
           </button>
 
           <button
             data-testid="delete-btn"
             onClick={ () => item.id !== undefined && handleDelete(item.id) }
+            className="ml-4"
           >
-            Excluir
+            <img
+              src="/src/images/delete.png"
+              alt="Editar"
+            />
           </button>
         </td>
       </tr>

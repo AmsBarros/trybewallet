@@ -9,15 +9,18 @@ function Wallet() {
         w-4/5"
     >
       <Header />
+
       <div
         className="bg-gray-100"
         style={ { width: '90%' } }
       >
         <WalletForm />
       </div>
-      <div className="mt-4">
+
+      <div className="bg-green-700 rounded-lg pt-5 pr-10 pl-10 pb-20">
         <Table />
       </div>
+
     </div>
   );
 }
