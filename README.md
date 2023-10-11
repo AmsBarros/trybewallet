@@ -1,39 +1,41 @@
 # TrybeWallet 🌟
 
-Bem-vindo ao TrybeWallet, uma carteira de controle de gastos com conversor de moedas para tornar suas finanças mais divertidas! 💰✨
+Welcome to TrybeWallet, an expense management wallet with a currency converter to make your finances more fun! 💰✨
 
-## O que é o TrybeWallet?
+## What is TrybeWallet?
 
-O TrybeWallet é um projeto desenvolvido como parte do curso da Trybe. Ele permite que os usuários gerenciem suas despesas de forma eficaz, adicionando, removendo e editando gastos, além de visualizar uma tabela de gastos e o total de gastos convertidos para a moeda de sua escolha.
+TrybeWallet is a project developed as part of the Trybe course. It allows users to effectively manage their expenses by adding, removing, and editing expenses, as well as viewing an expense table and the total expenses converted to the currency of your choice.
 
-## Como funciona? 🚀
+## How does it work? 🚀
 
-- 💼 **Gerencie suas Despesas:** Adicione, remova ou edite gastos de forma simples e rápida.
-- 📊 **Visualize Sua Tabela de Gastos:** Acompanhe todas as suas despesas em uma tabela organizada.
-- 💱 **Conversão de Moedas:** Veja o total de gastos em uma moeda de sua escolha.
+- 💼 **Manage Your Expenses:** Add, remove, or edit expenses quickly and easily.
+- 📊 **View Your Expense Table:** Track all your expenses in an organized table.
+- 💱 **Currency Conversion:** See the total expenses in a currency of your choice.
 
-## Tecnologias Utilizadas 🛠️
+## Technologies Used 🛠️
 
-O TrybeWallet foi construído com as seguintes tecnologias e habilidades:
+TrybeWallet was built using the following technologies and skills:
 
-- Redux para gerenciamento de estado.
-- React para a construção da interface do usuário.
-- Ações e redutores Redux para manipular o estado global.
-- Uso de hooks do Redux para leitura e manipulação do estado.
-- Ações assíncronas para integração com a API de conversão de moedas.
+- Redux for state management.
+- React for building the user interface.
+- Redux actions and reducers to handle global state.
+- Use of Redux hooks for reading and manipulating state.
+- Asynchronous actions for integration with the currency conversion API.
+- Tailwind CSS for styling.
+- Testing with React Testing Library and Vitest.
 
-## Como Usar o TrybeWallet? 🤔
+## How to Use TrybeWallet? 🤔
 
-Para experimentar o TrybeWallet em sua própria máquina, siga estas etapas:
+To try TrybeWallet on your own machine, follow these steps:
 
-1. Clone este repositório.
-2. Instale as dependências com `npm install`.
-3. Execute o projeto com `npm start`.
+1. Clone this repository.
+2. Install the dependencies with `npm install`.
+3. Run the project with `npm start`.
 
-Agora você pode começar a gerenciar suas despesas de forma eficaz!
+Now you can start managing your expenses effectively!
 
-## Contribuições São Bem-Vindas 🙌
+## Contributions Are Welcome 🙌
 
-Aceitamos contribuições para tornar o TrybeWallet ainda melhor! Sinta-se à vontade para abrir uma solicitação de pull com melhorias, correções de bugs ou novos recursos.
+We welcome contributions to make TrybeWallet even better! Feel free to open a pull request with improvements, bug fixes, or new features.
 
-Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco. Divirta-se gerenciando suas finanças com o TrybeWallet! 😄✨
+If you have any questions or need assistance, please don't hesitate to contact us. Enjoy managing your finances with TrybeWallet! 😄✨
